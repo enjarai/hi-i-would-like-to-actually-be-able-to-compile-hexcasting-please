@@ -17,14 +17,15 @@ public class PlayerBasedMishapEnv extends MishapEnvironment {
 
     @Override
     public void yeetHeldItemsTowards(Vec3 targetPos) {
-        var pos = this.caster.position();
-        var delta = targetPos.subtract(pos).normalize().scale(0.5);
-
-        for (var hand : InteractionHand.values()) {
-            var stack = this.caster.getItemInHand(hand);
-            this.caster.setItemInHand(hand, ItemStack.EMPTY);
-            this.yeetItem(stack, pos, delta);
-        }
+        // lol no
+//        var pos = this.caster.position();
+//        var delta = targetPos.subtract(pos).normalize().scale(0.5);
+//
+//        for (var hand : InteractionHand.values()) {
+//            var stack = this.caster.getItemInHand(hand);
+//            this.caster.setItemInHand(hand, ItemStack.EMPTY);
+//            this.yeetItem(stack, pos, delta);
+//        }
     }
 
     @Override

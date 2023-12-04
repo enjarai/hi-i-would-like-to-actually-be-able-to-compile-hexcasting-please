@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.misc.AkashicTreeGrower
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.core.BlockPos
@@ -46,14 +47,16 @@ object OpEdifySapling : SpellAction {
 
             val bs = env.world.getBlockState(pos)
             for (i in 0 until 8) {
-                val success = AkashicTreeGrower.INSTANCE.growTree(
-                    env.world,
-                    env.world.chunkSource.generator,
-                    pos,
-                    bs,
-                    env.world.getRandom()
-                )
-                if (success) break
+                env.world.setBlockAndUpdate(pos.above(i), HexBlocks.EDIFIED_LOG.defaultBlockState())
+                // why this doesnt work what
+//                val success = AkashicTreeGrower.INSTANCE.growTree(
+//                    env.world,
+//                    env.world.chunkSource.generator,
+//                    pos,
+//                    bs,
+//                    env.world.getRandom()
+//                )
+//                if (success) break
             }
         }
     }
