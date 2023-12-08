@@ -19,6 +19,8 @@ plugins {
 
     id("at.petra-k.PKPlugin") version "0.1.0-pre-83"
     id("at.petra-k.PKSubprojPlugin") version "0.1.0-pre-83" apply false
+
+    id 'maven-publish'
 }
 
 repositories {
@@ -84,5 +86,18 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "17"
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "enjaraiMaven"
+            url = "https://maven.enjarai.nl/mirrors"
+            credentials(PasswordCredentials)
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
     }
 }

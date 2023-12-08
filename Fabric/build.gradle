@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' // version "1.0-SNAPSHOT"
     id "at.petra-k.PKSubprojPlugin"
+    id 'maven-publish'
 }
 
 pkSubproj {
@@ -46,7 +47,7 @@ repositories {
     maven { url = 'https://maven.blamejared.com' }
     // modmenu and clothconfig
     maven { url "https://maven.shedaniel.me/" }
-    maven { url 'https://ladysnake.jfrog.io/artifactory/mods' }
+    maven { url 'https://maven.ladysnake.org/releases' }
     // Entity reach
     maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
     maven { url "https://mvn.devos.one/snapshots/" }
@@ -135,5 +136,30 @@ processResources {
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version
+    }
+}
+
+
+// configure the maven publication
+publishing {
+    repositories {
+        maven {
+            name = "enjaraiMaven"
+            url = "https://maven.enjarai.nl/mirrors"
+            credentials(PasswordCredentials)
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+
+    publications {
+        gaming(MavenPublication) {
+            groupId = "at.petrak.hexcasting"
+            artifactId = archivesBaseName
+            version = project.version
+
+            from components.java
+        }
     }
 }
