@@ -57,7 +57,7 @@ repositories {
         }
         filter { includeGroup "maven.modrinth" }
     }
-    // pehkui
+    // pehkui and gravity changer
     maven { url = "https://jitpack.io" }
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
@@ -107,7 +107,9 @@ dependencies {
     modImplementation "dev.emi:trinkets:$trinketsVersion"
     modImplementation "dev.emi:emi-fabric:${emiVersion}"
 
-//    modImplementation "maven.modrinth:gravity-api:$gravityApiVersion"
+    modImplementation ("com.github.qouteall:GravityChanger:$gravityChangerVersion") {
+        exclude group: "net.fabricmc.fabric-api"
+    }
     modApi("com.github.Virtuoel:Pehkui:${pehkuiVersion}", {
         exclude group: "net.fabricmc.fabric-api"
     })

@@ -32,7 +32,7 @@ fun List<Iota>.getDouble(idx: Int, argc: Int = 0): Double {
     }
 }
 
-fun List<Iota>.getEntity(idx: Int, argc: Int = 0): Entity {
+fun List<Iota>.getEntity(idx: Int,  argc: Int = 0): Entity {
     val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
     if (x is EntityIota) {
         return x.entity
