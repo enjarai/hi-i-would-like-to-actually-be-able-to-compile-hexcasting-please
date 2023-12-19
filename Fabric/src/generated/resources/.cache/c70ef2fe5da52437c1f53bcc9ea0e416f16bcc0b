@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-04T21:55:25.2557411	Hex Casting/Recipes
+// 1.20.1	2023-12-19T15:28:00.5660983	Hex Casting/Recipes
 f77518b6993fe8e31de10af286c33ab72c0f9077 data\hexcasting\advancements\recipes\redstone\impetus\empty.json
 78958099bf4337ad281580d90f434b3074ad18c8 data\hexcasting\recipes\pride_colorizer_genderqueer.json
 923e7cd200518042f11474713eca9ccad126dab7 data\hexcasting\recipes\staff\spruce.json
@@ -132,9 +132,9 @@ a72a0fcc0f3a81d31b30a7a626aef537796ca73b data\hexcasting\advancements\recipes\to
 93ed0491548920bc75797d18501c750ef07fe3ea data\hexcasting\advancements\recipes\misc\pride_colorizer_bisexual.json
 bc8fe4d2f55fe119b0b146a71782a3d4788380b1 data\create\recipes\crushing\amethyst_block.json
 af8fe74b624df4a31727347b9826614a66092b0a data\hexcasting\advancements\recipes\misc\pride_colorizer_agender.json
+06ca609ba1a32f094cf6edbc989bc9ddaf9d342c data\hexcasting\advancements\recipes\misc\pride_colorizer_genderfluid.json
 41a570f970c9af8229cb1140a11a5220fac00957 data\hexcasting\advancements\recipes\tools\staff\spruce.json
 c8f2ad363e4d20054f4e56fde02c8775a45a7169 data\hexcasting\recipes\artifact.json
-06ca609ba1a32f094cf6edbc989bc9ddaf9d342c data\hexcasting\advancements\recipes\misc\pride_colorizer_genderfluid.json
 c3f7b03fe184ed5e54a8ae06d130adf507b7683d data\hexcasting\recipes\staff\bamboo.json
 8815ea5d8d7379062e050adc5736cc579c3bdd9e data\hexcasting\recipes\edified_stairs.json
 55ea553a96e1d6a54385890f7c48fe7b2bed6871 data\hexcasting\advancements\recipes\tools\trinket.json

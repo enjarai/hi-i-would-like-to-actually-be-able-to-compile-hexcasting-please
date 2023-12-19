@@ -1,12 +1,12 @@
-// 1.20.1	2023-12-04T21:55:25.24674	Hex Casting/Loot Tables
+// 1.20.1	2023-12-19T15:28:00.5591003	Hex Casting/Loot Tables
 4efd95d408d050c36ff21b18f3c37116491fef92 data\hexcasting\loot_tables\blocks\directrix\redstone.json
 7123b1a0469d7bd5bf8a2772182d222bf354df1a data\hexcasting\loot_tables\blocks\slate_bricks_small.json
 a4e0194d8966a24531e43e04437cdb2a96456898 data\hexcasting\loot_tables\blocks\edified_tile.json
 509ecbb9731e75b63638c6012b2f986f131fd42f data\hexcasting\loot_tables\blocks\slate_amethyst_bricks_small.json
 8ea8fd68719a960c2e132df441564a70c0e376a8 data\hexcasting\loot_tables\blocks\amethyst_pillar.json
 ecaeb4d5703a7aa206627ed38ee71aeb7e93d688 data\hexcasting\loot_tables\blocks\impetus\rightclick.json
-b706c8a064f717c57104c48ea42aa860b45cf7a4 data\hexcasting\loot_tables\blocks\amethyst_dust_block.json
 499af9f15cf0a7f16fd2939e5d3af60a8089cc3e data\hexcasting\loot_tables\blocks\slate_bricks.json
+b706c8a064f717c57104c48ea42aa860b45cf7a4 data\hexcasting\loot_tables\blocks\amethyst_dust_block.json
 74159c21634679a6ab1dde1c181433db8b31c6ae data\hexcasting\loot_tables\blocks\edified_log_citrine.json
 c81a5cb81141ab1fe09dd5dd3a0968b69dfffbd7 data\hexcasting\loot_tables\blocks\stripped_edified_log.json
 2ab674e834184b4e17dc002556d4473cac137445 data\hexcasting\loot_tables\blocks\edified_slab.json

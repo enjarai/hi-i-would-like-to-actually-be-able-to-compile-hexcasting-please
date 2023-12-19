@@ -148,3 +148,26 @@ processResources {
         expand "version": project.version
     }
 }
+
+publishing {
+    repositories {
+        maven {
+            name = "enjaraiMaven"
+            url = "https://maven.enjarai.nl/mirrors"
+            credentials(PasswordCredentials)
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+
+    publications {
+        gaming(MavenPublication) {
+            groupId = 'at.petrak.hexcasting'
+            artifactId = archivesBaseName
+            version = project.version
+
+            from components.java
+        }
+    }
+}

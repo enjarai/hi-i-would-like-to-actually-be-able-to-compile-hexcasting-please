@@ -1632,5 +1632,13 @@
       "interop.pehkui.get": "Get the scale of the entity, as a proportion of their normal size. For most entities, this will be 1.",
       "interop.pehkui.set": "Set the scale of the entity, passing in a proportion of their normal size. Costs about 1 $(item)Amethyst Shard/$."
     }
-  }
+  },
+
+  "hexcasting.spell.hexcasting:interop/gravity/get": "Gravitational Purification",
+  "hexcasting.spell.hexcasting:interop/gravity/set": "Alter Gravity",
+
+  "hexcasting.entry.interop.gravity": "Gravity Changer",
+  "hexcasting.page.interop.gravity.1": "I have discovered actions to get and set an entity's gravity. I find them interesting, if slightly nauseating.$(br2)Interestingly, although $(l:patterns/great_spells/flight)$(action)Flight/$ is a great spell, and manipulates gravity similarly, these are not. It baffles me why... Perhaps the mod developer wanted players to have fun, for once.",
+  "hexcasting.page.interop.gravity.get": "Get the main direction gravity pulls the given entity in, as a unit vector. For most entities, this will be down, <0, -1, 0>.",
+  "hexcasting.page.interop.gravity.set": "Set the main direction gravity pulls the given entity in. The given vector will be coerced into the nearest axis, as per $(l:patterns/math#hexcasting:coerce_axial)$(action)Axial Purification/$. Costs about one $(l:items/amethyst)$(item)Charged Amethyst/$."
 }
