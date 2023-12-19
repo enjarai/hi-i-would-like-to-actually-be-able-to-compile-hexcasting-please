@@ -89,6 +89,7 @@ dependencies {
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:$cardinalComponentsVersion"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-item:$cardinalComponentsVersion"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-block:$cardinalComponentsVersion"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-world:$cardinalComponentsVersion"
 
 //    modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
 //    include "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
@@ -107,9 +108,7 @@ dependencies {
     modImplementation "dev.emi:trinkets:$trinketsVersion"
     modImplementation "dev.emi:emi-fabric:${emiVersion}"
 
-    modImplementation ("com.github.qouteall:GravityChanger:$gravityChangerVersion") {
-        exclude group: "net.fabricmc.fabric-api"
-    }
+    modImplementation "maven.modrinth:gravity-api-fork:$gravityChangerVersion"
     modApi("com.github.Virtuoel:Pehkui:${pehkuiVersion}", {
         exclude group: "net.fabricmc.fabric-api"
     })
