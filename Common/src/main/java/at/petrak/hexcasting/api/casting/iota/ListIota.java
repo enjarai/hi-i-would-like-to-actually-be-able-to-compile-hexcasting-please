@@ -1,13 +1,18 @@
 package at.petrak.hexcasting.api.casting.iota;
 
 import at.petrak.hexcasting.api.casting.SpellList;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.utils.HexUtils;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -78,7 +83,7 @@ public class ListIota extends Iota {
         return this.getList();
     }
 
-    public static IotaType<ListIota> TYPE = new IotaType<>() {
+    public static IotaType<ListIota> TYPE = new IotaType<ListIota>() {
         @Nullable
         @Override
         public ListIota deserialize(Tag tag, ServerLevel world) throws IllegalArgumentException {
@@ -108,10 +113,58 @@ public class ListIota extends Iota {
                 out.append(IotaType.getDisplay(csub));
 
                 if (i < list.size() - 1) {
-                    out.append(", ");
+                    CompoundTag nextCsub = HexUtils.downcast(list.get(i+1), CompoundTag.TYPE);
+                    if(IotaType.getTypeFromTag(csub) == HexIotaTypes.PATTERN && IotaType.getTypeFromTag(nextCsub) == HexIotaTypes.PATTERN) {
+                        out.append(" ");
+                    } else {
+                        out.append(", ");
+                    }
                 }
             }
-            return Component.translatable("hexcasting.tooltip.list_contents", out).withStyle(ChatFormatting.DARK_PURPLE);
+
+            String copyText = getCopyText(list);
+
+            MutableComponent listText = Component.translatable("hexcasting.tooltip.list_contents", out).withStyle(ChatFormatting.DARK_PURPLE).copy();
+            Style clickEventStyle = Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, copyText));
+            listText.setStyle(clickEventStyle.applyTo(listText.getStyle()));
+            return listText;
+        }
+
+        // this is fine
+        public String getCopyText(Tag element){
+            String copyText = "";
+            if(element.getType() == ListTag.TYPE){ // handle list
+                ListTag list = HexUtils.downcast(element, ListTag.TYPE);
+                copyText = "[";
+                for (int i = 0; i < list.size(); i++) {
+                    Tag sub = list.get(i);
+                    copyText += getCopyText(sub);
+
+                    if (i < list.size() - 1) {
+                        copyText += (", ");
+                    }
+                }
+                copyText += "]";
+            } else { // handle not list
+                CompoundTag csub = HexUtils.downcast(element, CompoundTag.TYPE);
+                IotaType<?> type = IotaType.getTypeFromTag(csub);
+                if(type == PatternIota.TYPE){
+                    // handle pattern:
+                    CompoundTag tagData = csub.getCompound(HexIotaTypes.KEY_DATA);
+                    if(tagData == null || tagData.isEmpty()) return copyText;
+                    HexPattern pattern = HexPattern.fromNBT(tagData);
+                    // HexGloop.logPrint(csub.toString() + " => " + pattern.toString() + "\n");
+                    copyText += ("<" + pattern.getStartDir().toString().replace("_", "").toLowerCase() + "," + pattern.anglesSignature() + ">");
+                } else if(type == ListIota.TYPE){
+                    // kinda handle lists again ? mostly just get the data out of here and call it as if we were passing it to the display method
+                    var data = csub.get(HexIotaTypes.KEY_DATA);
+                    return getCopyText(data);
+                } else {
+                    copyText += IotaType.getDisplay(csub).getString();
+                }
+            }
+
+            return copyText;
         }
 
         @Override

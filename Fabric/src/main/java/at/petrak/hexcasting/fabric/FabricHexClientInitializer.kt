@@ -10,7 +10,9 @@ import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.HexParticles
 import at.petrak.hexcasting.fabric.event.MouseScrollCallback
 import at.petrak.hexcasting.fabric.network.FabricPacketHandler
+import at.petrak.hexcasting.gloopy.Glooptastic
 import at.petrak.hexcasting.interop.HexInterop
+import com.mojang.blaze3d.vertex.Tesselator
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry
@@ -72,5 +74,7 @@ object FabricHexClientInitializer : ClientModInitializer {
             { colorizer, item -> ColorProviderRegistry.ITEM.register(colorizer, item) },
             { colorizer, block -> ColorProviderRegistry.BLOCK.register(colorizer, block) })
         ModelLoadingRegistry.INSTANCE.registerModelProvider(RegisterClientStuff::onModelRegister)
+
+        Glooptastic.specialTesselator = Tesselator()
     }
 }

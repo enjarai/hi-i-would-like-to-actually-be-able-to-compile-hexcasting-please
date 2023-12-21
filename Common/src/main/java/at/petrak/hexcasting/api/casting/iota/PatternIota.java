@@ -20,11 +20,14 @@ import at.petrak.hexcasting.api.utils.HexUtils;
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest;
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import at.petrak.hexcasting.gloopy.PatternStyle;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import org.jetbrains.annotations.NotNull;
@@ -146,7 +149,15 @@ public class PatternIota extends Iota {
 
         @Override
         public Component display(Tag tag) {
-            return PatternIota.display(PatternIota.deserialize(tag).getPattern());
+            HexPattern pattern = PatternIota.deserialize(tag).getPattern();
+            Style patternStyle = ((PatternStyle) Style.EMPTY.withBold(true).withStrikethrough(true).withColor(ChatFormatting.WHITE)).withPattern(pattern);
+            Component originalText = PatternIota.display(pattern); // get the original text so we can keep the string the same
+            String originalString = originalText.getString();
+            MutableComponent patternTextStyled = Component.literal(originalString.substring(0, 1)).setStyle(patternStyle);
+            String hiddenString = originalString.substring(1);
+            patternTextStyled.append(Component.literal(hiddenString).setStyle(((PatternStyle) patternStyle).withHidden(true)));
+
+            return patternTextStyled; // PatternIota.display(PatternIota.deserialize(tag).getPattern());
         }
 
         @Override

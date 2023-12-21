@@ -22,6 +22,12 @@
     "client.FabricMixinGameRenderer",
     "client.FabricModelManagerMixin",
     "client.FabricMouseHandlerMixin",
-    "client.FabricParticleEngineMixin"
+    "client.FabricParticleEngineMixin",
+    "textpatterns.MixinPatternStyle",
+    "textpatterns.MixinPatternStyle$MixinPatternStyleSerializer",
+    "textpatterns.MixinTextDrawerPatSty",
+    "textpatterns.MixinParsePatternFormatting",
+    "textpatterns.MixinPatTextWiden",
+    "textpatterns.MixinSetTessBuffer"
   ]
 }
