@@ -163,7 +163,7 @@ public class MixinPatternStyle implements PatternStyle {
 	@Mixin(Style.Serializer.class)
 	public static class MixinPatternStyleSerializer {
 		@ModifyReturnValue(method = "deserialize", at = @At("RETURN"))
-		private Style HexPatStyDeserialize(Style initialStyle, JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
+		private Object HexPatStyDeserialize(Object initialStyle, JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
 			if (!jsonElement.isJsonObject() || initialStyle == null) {
 				return initialStyle;
 			}
@@ -186,7 +186,7 @@ public class MixinPatternStyle implements PatternStyle {
 		}
 
 		@ModifyReturnValue(method = "serialize", at = @At("RETURN"))
-		private JsonElement HexPatStySerialize(JsonElement jsonElement, Style style, Type type, JsonSerializationContext jsonSerializationContext) {
+		private JsonElement HexPatStySerialize(JsonElement jsonElement, Object style, Type type, JsonSerializationContext jsonSerializationContext) {
 			PatternStyle pStyle = (PatternStyle) style;
 			if (jsonElement == null || !jsonElement.isJsonObject() || pStyle.getPattern() == null) {
 				return jsonElement;
